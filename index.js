@@ -2,14 +2,14 @@
 
 //mongodb+srv://jeffersonostler:C6jN90tW32MjKAaf@cluster1.hsjluox.mongodb.net/?retryWrites=true&w=majority
 const express = require('express');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const { Item, Player, Place, Game, ActivePlayer } = require("./models");
 
 const app = express();
-const port = 3001;
-
+const port = process.env.PORT || 3001;
 app.use(cors());
 
 mongoose.connect('mongodb+srv://jeffersonostler:C6jN90tW32MjKAaf@cluster1.hsjluox.mongodb.net/EliminationGame?retryWrites=true&w=majority',
@@ -63,7 +63,6 @@ app.get('/activeplayers', async (req, res) => {
 });
 
 app.get('/activeplayer/:player/:gameNumber', async (req, res) => {
-    console.log(req.params)
     ActivePlayer.findOne(
         {
             player: req.params.player,
