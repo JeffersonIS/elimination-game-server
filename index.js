@@ -1,6 +1,3 @@
-//MongoDB user: jeffersonostler pass: C6jN90tW32MjKAaf
-
-//mongodb+srv://jeffersonostler:C6jN90tW32MjKAaf@cluster1.hsjluox.mongodb.net/?retryWrites=true&w=majority
 const express = require('express');
 require('dotenv').config();
 const bodyParser = require('body-parser');
@@ -12,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 app.use(cors());
 
-mongoose.connect('mongodb+srv://jeffersonostler:C6jN90tW32MjKAaf@cluster1.hsjluox.mongodb.net/EliminationGame?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_URL,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
